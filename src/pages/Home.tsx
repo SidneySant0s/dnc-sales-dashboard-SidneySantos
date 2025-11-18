@@ -5,19 +5,29 @@ import { currencyConverter } from "@/utils"
 function Home() {
   const mockListData = [
     {
-      avatar:'/dnc-avatar.svg',
-      name: 'Nome Sobrenome 1',
-      subtitle: currencyConverter(1234.54),
+      avatar:'/helena.svg',
+      name: 'Helena',
+      subtitle: currencyConverter(12120.05),
     },
     {
-      avatar:'/dnc-avatar.svg',
-      name: 'Nome Sobrenome 2',
-      subtitle: currencyConverter(2234.54),
+      avatar:'/Oscar.svg',
+      name: 'Oscar',
+      subtitle: currencyConverter(11450.09),
     },
     {
-      avatar:'/dnc-avatar.svg',
-      name: 'Nome Sobrenome 3',
-      subtitle: currencyConverter(7734.54),
+      avatar:'/daniel.svg',
+      name: 'Daniel',
+      subtitle: currencyConverter(10893.19),
+    },
+    {
+      avatar:'/djay.svg',
+      name: 'Daniel Jay Park',
+      subtitle: currencyConverter(9925.49),
+    },
+    {
+      avatar:'/mark.svg',
+      name: 'Mark Rojas',
+      subtitle: currencyConverter(8245.89),
     }
   ]
 
