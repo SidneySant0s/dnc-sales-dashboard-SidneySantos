@@ -3,7 +3,8 @@ import Cookies from "js-cookie"
 import { Home, Leads, Login, Profile, Registration} from "./pages"
 
 function App() {
-  const ProtectedRouted = () => {
+  
+  const ProtectedRoute = () => {
     const checkAuthCookie = Cookies.get('Authorization')
     if (!checkAuthCookie){
       alert('Autenticação necessária')
@@ -18,7 +19,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login/>}/>
         <Route path="/cadastro" element={<Registration/>}/>
-        <Route element={<ProtectedRouted />}>
+
+        <Route element={<ProtectedRoute />}>
+
           <Route path="/home" element={<Home/>}/>
           <Route path="/leads" element={<Leads/>}/>
           <Route path="/Perfil" element={<Profile/>}/>
