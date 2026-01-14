@@ -4,7 +4,6 @@ import { Container, Grid } from "@mui/material"
 import { useFormValidation, useGet, usePost, useDelete } from "@/hooks"
 
 //TYPES
-import type { AxiosRequestConfig } from "axios"
 import type { InputProps, LeadsData, LeadsPostData, MessageProps} from '@/types'
 
 
