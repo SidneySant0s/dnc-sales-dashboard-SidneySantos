@@ -50,7 +50,7 @@ function Profile() {
     error: profileUptadeError, 
   } = usePut<ProfileEditableData>('profile/update')
 
-    const { deleteData: profileDeleteData, loading: profileDeleteLoading } = useDelete('profile/delete')
+  const { deleteData: profileDeleteData, loading: profileDeleteLoading } = useDelete()
 
   useEffect(() => {
     if (profileData){
@@ -80,7 +80,7 @@ function Profile() {
   const handleDelete = async () =>{
     if(confirm('Tem certeza que deseja excluir sua conta? Se sim, certifique-se de deletar os seus leads antes')){
       try {
-        await profileDeleteData()
+        await profileDeleteData('/api/profile/delete')
         alert('Perfil deletado com sucesso!')
         Cookies.remove('Authorization')
         window.location.href = '/'
