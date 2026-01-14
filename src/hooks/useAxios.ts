@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
     baseURL: `${import.meta.env.VITE_API_BASE_URL}/`
 })
 
-export const usePost = <T, P>(endpoint:  string) =>{
+export const usePost = <T, P>(endpoint:  string, withAuth?: boolean) =>{
     const [data, setData] = useState <T | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<number | null>(null)
@@ -19,14 +19,22 @@ export const usePost = <T, P>(endpoint:  string) =>{
         setError(null)
 
         try{
+            const headers = withAuth 
+            ? {
+                Authorization: `Bearer ${Cookies.get('Authorization')}`,
+                'Content-Type': 'application/json',
+                ...config?.headers
+              } 
+            : {
+                'Content-Type': 'application/json',
+                ...config?.headers
+
+              }
             const response = await axiosInstance({
                 url: endpoint,
                 method: 'POST',
                 data: postData,
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...config?.headers
-                },
+                headers: headers,
                 ...config
             })
             setData(response.data)
@@ -108,31 +116,31 @@ export const usePut = <T>(endpoint:  string) =>{
     return{ data, loading, error, putData }
 }
 
-export const useDelete = <T>(endpoint:  string) =>{
+export const useDelete = <T>() =>{
     const [data, setData] = useState <T | null>(null)
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<number | null>(null);
 
-    const deleteData = async (config?: AxiosRequestConfig ) =>{
+    const deleteData = async (endpoint: string, config?: AxiosRequestConfig ) =>{
         setData(null)
         setLoading(true)
+        setError(null)
 
         try{
-            const response = await axiosInstance({
-                url: endpoint,
-                method: 'DELETE',
-                headers: {
-                    Authorization: `Bearer ${Cookies.get('Authorization')}`,
-                    ...config?.headers
-                },
-                ...config
+            const response = await axiosInstance.delete(endpoint, { 
+                headers: { Authorization: `Bearer ${Cookies.get('Authorization')}`, 
+                ...config?.headers, 
+            }, 
+            ...config,
             })
             setData(response.data)
+            return response.data
         } catch  (e: any){
-            throw e.response?.status
+            throw e.response?.status || 500
         } finally {
             setLoading(false)
         }
     }
 
-    return{ data, loading, deleteData }
+    return{ data, loading, error, deleteData }
 }

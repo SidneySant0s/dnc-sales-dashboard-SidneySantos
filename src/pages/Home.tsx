@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 //COMPONENTS
 import {
   AvatarsList,
@@ -113,9 +115,12 @@ function Home() {
                     {
                       !highlightsloading && threeHighlight &&(
                       <>
+                     
                         <StyledH2 className="mb-1">Leads contactado</StyledH2>
-                          <StyledH3 className="mb-1" size={40} lineheight={40}>{currencyConverter(threeHighlight.value)}</StyledH3>
-                          <StyledSpan>{(threeHighlight.subtitle)}</StyledSpan>
+                          <StyledH3 className="mb-1" size={40} lineheight={40}>
+                            {currencyConverter(threeHighlight.value)}
+                            </StyledH3>
+                          <StyledSpan><Link to="/leads">{(threeHighlight.subtitle)} </Link></StyledSpan>
                       </>)
                     }
                   </CardComponent>
