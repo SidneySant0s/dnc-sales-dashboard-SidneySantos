@@ -1,5 +1,5 @@
 import 'styled-components';
-import type { Theme } from './theme';
+import type { Theme } from '@/types';
 
 export interface Theme {
     appBackground: string
