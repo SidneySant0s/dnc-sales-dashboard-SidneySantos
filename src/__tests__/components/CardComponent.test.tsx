@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import type { Theme } from '@/types';
 import { ThemeProvider } from 'styled-components';
 import { themesList } from '@/resources/themesList';
-import { Alert } from '@mui/material';
 
 describe("CardComponent", () => { 
     const renderComponent = (theme: Theme, className?: string) => 
