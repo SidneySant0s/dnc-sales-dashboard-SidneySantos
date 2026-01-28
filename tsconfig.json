@@ -2,8 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@*":["src/*"]
-    }
+      "@/*":["src/*"]
+    },
+    "types": ["jest", "@testing-library/jest-dom"],
+    "esModuleInterop": true,
+    "jsx": "react-jsx"
   },
   "files": [],
   "references": [
