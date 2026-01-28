@@ -41,7 +41,7 @@ function Login() {
     switch(error){
       case 401:
         return{
-          msg: 'Email e/ou senha invalidos',
+          msg: 'Email e/ou senha inválidos',
           type: 'error',
         }
         default:

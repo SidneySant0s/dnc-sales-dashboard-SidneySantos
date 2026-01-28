@@ -68,7 +68,8 @@ function Home() {
           {!highlightsError && (
               <>
                 <Grid container size={{ xs: 12, md: 4 }}>
-                  <CardComponent 
+                  <CardComponent
+                   id ="total-sales"
                   className={highlightsloading! ? 'skeleton-loading skeleton-loading-mh-1': ''}>
                     {
                       !highlightsloading && firstHighlight &&(
@@ -84,7 +85,9 @@ function Home() {
                 </Grid>
 
                 <Grid container size={{ xs: 12, md: 4 }}>
-                  <CardComponent className={
+                  <CardComponent
+                  id ="month-goals"
+                   className={
                     secondHighlight?.subtitle ?? 'skeleton-loading skeleton-loading-mh-1'
                   }>
                     {
@@ -110,7 +113,9 @@ function Home() {
                 </Grid>
 
                 <Grid container size={{ xs: 12, md: 4 }}>
-                  <CardComponent className={highlightsloading! ? 'skeleton-loading skeleton-loading-mh-1': ''}>
+                  <CardComponent 
+                  id ="total-leads"
+                  className={highlightsloading! ? 'skeleton-loading skeleton-loading-mh-1': ''}>
                     
                     {
                       !highlightsloading && threeHighlight &&(
@@ -131,11 +136,13 @@ function Home() {
           <Grid container size={{ xs: 12, md: 7 }}>
             {
               !salesMonthError && (
-              <CardComponent className={salesMonthloading ? 'skeleton-loading skeleton-loading-mh-2' : ''}>
+              <CardComponent
+              id ="month-sales-chart"
+              className={salesMonthloading ? 'skeleton-loading skeleton-loading-mh-2' : ''}>
                 {
                   !salesMonthloading && salesMonthData &&(
                   <>
-                    <StyledH2 className="mb-1">Valor de vendas do mês</StyledH2>
+                    <StyledH2 className="mb-1">Valor de vendas no mês</StyledH2>
                       <CustomChart
                         labels={salesMonthData.labels.map((label) =>label)}
                         data={salesMonthData.data.map((data) =>data)}
@@ -152,7 +159,9 @@ function Home() {
           <Grid container size={{ xs: 12, md: 5 }}>
               {
                 !salesStarsError && (
-                <CardComponent className={salesMonthloading ? 'skeleton-loading skeleton-loading-mh-2' : '' }>
+                <CardComponent 
+                id ="sales-stars"
+                className={salesMonthloading ? 'skeleton-loading skeleton-loading-mh-2' : '' }>
                   {
                     !salesStarsloading && salesMonthData && (
                       <>
@@ -181,7 +190,8 @@ function Home() {
             
             {
               !newsError && (
-                  <CardComponent 
+                  <CardComponent
+                  id ="news"
                   className={newsloading ? 'skeleton-loading skeleton-loading-mh-2' : '' }>
                     {
                       !newsloading && newsData &&(
@@ -210,7 +220,9 @@ function Home() {
           <Grid container size={{ xs: 12, md: 7 }}>
             {
               !salesYearError && (
-              <CardComponent className={salesYearloading ? 'skeleton-loading skeleton-loading-mh-2' : ''}>
+              <CardComponent 
+              id ="year-sales-chart"
+              className={salesYearloading ? 'skeleton-loading skeleton-loading-mh-2' : ''}>
                 {
                   !salesYearloading && salesYearData &&(
                   <>
